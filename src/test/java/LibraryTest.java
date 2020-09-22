@@ -9,9 +9,6 @@ Add a capacity to the library and write a method to check if stock is full befor
 Write a method to count the number of books in the library.
 Extensions:
 Add a third class which interacts with the other two. E.g. you could add a Borrower with a method that takes a Book and moves to the Borrower's collection.
-
-TO DO:
-
 Advanced Extension
 The library wants to keep track of it's number of books by genre. Using a HashMap, store the genre of each book as the key - and a count of how many books of that genre as the value.
 */
@@ -83,6 +80,25 @@ public class LibraryTest {
         assertTrue(library.getCollection().contains(book2));
         assertFalse(library.getCollection().contains(book1));
         assertEquals(1,library.getBookCount());
+
+    }
+
+    @Test
+    public void canAccessGenreDatabase(){
+        library.addBookToCollection(book1);
+        library.addBookToCollection(book2);
+        library.addBookToCollection(book3);
+        library.addBookToCollection(book4);
+
+        library.populateGenreDB();
+        assertEquals(3,library.getHashMapSize());
+        int value1 = library.getGenreDB().get("Fantasy");
+        assertEquals(2, value1);
+        int value2 = library.getGenreDB().get("Military art");
+        assertEquals(1, value2);
+        int value3 = library.getGenreDB().get("History");
+        assertEquals(1, value3);
+        assertNull(null, library.getGenreDB().get("Self Development"));
 
     }
 

@@ -20,6 +20,19 @@ public class Book {
         return this.genre;
     }
 
+    public int hashCode(){
+        int hash = 7;
+        hash = 31 * hash + (title == null ? 0 : title.hashCode());
+        hash = 31 * hash + (author == null ? 0 : author.hashCode());
+        hash = 31 * hash + (genre == null ? 0 : genre.hashCode());
+
+       return hash;
+    }
+
+    public int equals(){
+        return 2;
+    }
+
 
 
 }

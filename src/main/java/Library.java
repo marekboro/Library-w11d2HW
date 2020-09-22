@@ -1,14 +1,17 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
     // Attributes
     private ArrayList<Book> bookCollection;
     private int capacity;
+    private HashMap<String, Integer> genreDB;
 
     //constructor
     public Library(int capacity) {
         this.bookCollection = new ArrayList<>();
         this.capacity = capacity;
+        this.genreDB = new HashMap<String, Integer>();
     }
     //methods
 
@@ -32,11 +35,11 @@ public class Library {
         }
     }
 
-    public int getBookCount(){
+    public int getBookCount() {
         return this.bookCollection.size();
     }
 
-    public void removeBook(Book book){
+    public void removeBook(Book book) {
 
         this.bookCollection.remove(book);
 
@@ -46,7 +49,25 @@ public class Library {
 //        }
     }
 
+    public void populateGenreDB() {
+        for (Book book : this.bookCollection) {
+            if (genreDB.get(book.getGenre()) == null) {
+                this.genreDB.put(book.getGenre(), 1);}
+            else  {
+                int value = genreDB.get(book.getGenre());
+                this.genreDB.remove(book.getGenre());
+                this.genreDB.put(book.getGenre(), value + 1);
+            }
+        }
+    }
 
+    public int getHashMapSize(){
+        return genreDB.size();
+    }
+
+    public HashMap<String, Integer> getGenreDB() {
+        return genreDB;
+    }
 }
 
 
