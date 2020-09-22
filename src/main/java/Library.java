@@ -36,6 +36,16 @@ public class Library {
         return this.bookCollection.size();
     }
 
+    public void removeBook(Book book){
+
+        this.bookCollection.remove(book);
+
+//         INTELIJ suggests that this check is redundant! :
+//        if (this.bookCollection.contains(book)){
+//            this.bookCollection.remove(book);
+//        }
+    }
+
 
 }
 

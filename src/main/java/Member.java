@@ -8,6 +8,18 @@ public class Member {
             this.borrowedBooks = new ArrayList<>();
         }
 
+        public int getBookCount(){
+            return this.borrowedBooks.size();
+        }
+
+        public void borrowBook(Library library, Book book){
+            if (library.getCollection().contains(book)){
+                library.removeBook(book);
+                borrowedBooks.add(book);
+            }
+        }
+
+
 
 
 }

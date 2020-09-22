@@ -8,12 +8,9 @@ Write a method to add a book to the library stock.
 Add a capacity to the library and write a method to check if stock is full before adding a book.
 Write a method to count the number of books in the library.
 Extensions:
-Add a third class...
+Add a third class which interacts with the other two. E.g. you could add a Borrower with a method that takes a Book and moves to the Borrower's collection.
 
 TO DO:
-
-Extensions:
-Add a third class which interacts with the other two. E.g. you could add a Borrower with a method that takes a Book and moves to the Borrower's collection.
 
 Advanced Extension
 The library wants to keep track of it's number of books by genre. Using a HashMap, store the genre of each book as the key - and a count of how many books of that genre as the value.
@@ -76,6 +73,17 @@ public class LibraryTest {
         library.addBookToCollection(book2);
         library.addBookToCollection(book5);
         assertEquals(3,library.getBookCount());
+    }
+
+    @Test
+    public void bookCanBeRemovedFromCollection(){
+        library.addBookToCollection(book1);
+        library.addBookToCollection(book2);
+        library.removeBook(book1);
+        assertTrue(library.getCollection().contains(book2));
+        assertFalse(library.getCollection().contains(book1));
+        assertEquals(1,library.getBookCount());
+
     }
 
 }
